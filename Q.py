@@ -12,7 +12,7 @@ class FlightTable:
     def add_flight(self, flight):
         self.flights.append(flight)
 
-    def search_by_city(self, city):
+    def by_city(self, city):
         result = [flight for flight in self.flights if city in (flight.source, flight.destination)]
         return result
 
@@ -53,7 +53,7 @@ def main():
     if choice == 1:
         city = input("Enter the city code (e.g., BLR): ")
         city_name = city_mapping.get(city, "Unknown")
-        results = flight_table.search_by_city(city)
+        results = flight_table.by_city(city)
         print(f"Flights related to {city_name}:")
         for flight in results:
             print(f"Flight ID: {flight.flight_id}, From: {city_mapping[flight.source]}, To: {city_mapping[flight.destination]}, Price: {flight.price}")
